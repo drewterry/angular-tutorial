@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: /bin/bash
+    volumes:
+      - ./my-app:/my-app
+      - /my-app/node_modules
+    ports:
+      - "4200:4200"
