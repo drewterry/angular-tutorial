@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     build: .
-    command: /bin/bash
+    command: ng serve -H 0.0.0.0
     volumes:
       - ./angular-tour-of-heroes:/angular-tour-of-heroes
       - /angular-tour-of-heroes/node_modules

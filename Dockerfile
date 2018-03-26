@@ -6,3 +6,5 @@ WORKDIR /angular-tour-of-heroes
 COPY ./angular-tour-of-heroes/package.json .
 
 RUN npm install -g @angular/cli --unsafe && npm install
+
+EXPOSE 4200
