@@ -4,7 +4,7 @@ services:
     build: .
     command: /bin/bash
     volumes:
-      - ./my-app:/my-app
-      - /my-app/node_modules
+      - ./angular-tour-of-heroes:/angular-tour-of-heroes
+      - /angular-tour-of-heroes/node_modules
     ports:
       - "4200:4200"

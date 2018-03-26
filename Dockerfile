@@ -1,8 +1,8 @@
 FROM node
 
-RUN mkdir /my-app
-WORKDIR /my-app
+RUN mkdir /angular-tour-of-heroes
+WORKDIR /angular-tour-of-heroes
 
-COPY ./my-app/package.json .
+COPY ./angular-tour-of-heroes/package.json .
 
 RUN npm install -g @angular/cli --unsafe && npm install
