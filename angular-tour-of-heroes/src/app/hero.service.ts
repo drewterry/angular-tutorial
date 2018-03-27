@@ -37,12 +37,30 @@ export class HeroService {
       );
   }
 
-
   addHero (hero: Hero): Observable<Hero> {
     return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
       .pipe(
         tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
         catchError(this.handleError<Hero>('addHero'))
+      );
+  }
+
+  deleteHero (hero: Hero): Observable<Hero> {
+    return this.http.delete<Hero>(`${this.heroesUrl}/${hero.id}`, httpOptions)
+      .pipe(
+        tap(() => this.log(`deleted hero w/ id=${hero.id}`)),
+        catchError(this.handleError<Hero>(`deleteHero id=${hero.id}`))
+      );
+  }
+
+  searchHeroes (term: string): Observable<Hero[]> {
+    if(!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
+      .pipe(
+        tap(() => this.log(`found heroes matching ${term}`)),
+        catchError(this.handleError<Hero[]>('searchHeroes', []))
       );
   }
 
