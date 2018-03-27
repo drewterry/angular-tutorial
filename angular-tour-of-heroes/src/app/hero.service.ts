@@ -33,7 +33,16 @@ export class HeroService {
     return this.http.put<Hero>(this.heroesUrl, hero, httpOptions)
       .pipe(
         tap(() => this.log(`updated hero id=${hero.id}`)),
-        catchError(this.handleError(`updateHero id=${hero.id}`))
+        catchError(this.handleError<any>(`updateHero id=${hero.id}`))
+      );
+  }
+
+
+  addHero (hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+      .pipe(
+        tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
+        catchError(this.handleError<Hero>('addHero'))
       );
   }
 
